@@ -1,35 +1,120 @@
 <template>
-<nav>
-    <ul>
-        <li ><router-link :to="{ path: '/'}" exact>Blogs</router-link></li>
-        <li><router-link :to="{ path: '/add'}" exact>Add a New Blog</router-link></li>
-    </ul>
-</nav>
+    <nav class="navbar">
+        <div class="brand-title">Blogging Platform</div>
+        <a href="#" class="toggle-button" @click="opens">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </a>
+        <div class="navbar-links">
+          <ul>
+            <li><router-link :to="{ path: '/'}" exact>Blogs</router-link></li>
+            <li><router-link :to="{ path: '/add'}" exact>Add  Blog</router-link></li>
+          </ul>
+        </div>
+      </nav>
 </template>
-
+<script src="./js/Navbar.js"></script>
 <style scoped>
-ul{
-    list-style-type: none;
-    text-align: center;
-    margin:0;
+* {
+    box-sizing: border-box;
 }
-li{
-    display: inline-block;
-    margin: 0,10px;
+
+body {
+    margin: 0;
+    padding: 0;
 }
-a{
-    color:#fff;
+
+.navbar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+}
+
+.brand-title {
+    font-size: 1.5rem;
+    margin: .5rem;
+}
+
+.navbar-links {
+    height: 100%;
+}
+
+.navbar-links ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    list-style: none;
+}
+
+.navbar-links li a {
+    display: block;
     text-decoration: none;
-    padding: 6px 8px;
-    border-radius: 10px;
+    color: white;
+    padding: 1rem;
 }
-nav{
-background:#444;
-padding:14px 0;
-margin-bottom: 40px;
+.navbar-links li:hover {
+    background-color: #555;
 }
 .router-link-active{
-    background: #eee;
-    color: #444;
+     background-color: #555;
 }
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .toggle-button {
+        display: flex;
+    }
+
+    .navbar-links {
+        display: none;
+        width: 100%;
+    }
+
+    .navbar-links ul {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .navbar-links ul li {
+        text-align: center;
+    }
+
+    .navbar-links ul li a {
+        padding: .5rem 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+}
+
 </style>

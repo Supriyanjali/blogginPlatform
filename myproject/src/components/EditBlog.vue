@@ -3,12 +3,12 @@
 <h1>Edit Blog</h1>
     <form>
         <div class="title">
-            <label for="titleName" >Title of Blog :</label>
-            <textarea type="text" id="titleName" v-model="blog.title" required/>
+            <label for="titleName" >Title of Blog :</label><span>*</span>
+            <textarea type="text" id="titleName" v-model.trim="blog.title" />
         </div>
         <div class="description">
-            <label for="desc">Description :</label>
-            <textarea type="text" v-model="blog.description" id="desc" required/>
+            <label for="desc">Description :</label><span>*</span>
+            <textarea rows="10" type="text" v-model.trim="blog.description" id="desc"/>
         </div>
         <button class="submitButton" v-on:click.prevent="editBlog">
             EDIT BLOG

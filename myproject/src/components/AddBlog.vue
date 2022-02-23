@@ -3,12 +3,12 @@
 <h1>Add New Blog</h1>
     <form v-if="!submitted">
         <div class="title">
-            <label for="titleName" >Title of Blog :</label>
-            <textarea type="text" id="titleName" v-model.lazy="blog.title" required/>
+            <label for="titleName" >Title of Blog <span>*</span></label>
+            <textarea type="text" id="titleName" placeholder="Give me the title of your blog...." v-model="blog.title" />
         </div>
         <div class="description">
-            <label for="desc">Description :</label>
-            <textarea type="text" v-model.lazy="blog.description" id="desc" required/>
+            <label for="desc">Description <span>*</span></label>
+            <textarea rows="8" type="text" placeholder="Give me the description of your blog...." v-model="blog.description" id="desc" />
         </div>
         <button class="submitButton" v-on:click.prevent="submitBlog">
             ADD BLOG
@@ -54,5 +54,8 @@ h3{
     background-color: rgb(42, 43, 44);
     border: 2px solid white;
     border-radius: 5px;
+}
+span{
+    color:red;
 }
 </style>

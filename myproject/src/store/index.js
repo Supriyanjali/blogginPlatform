@@ -4,7 +4,8 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  blogs: []
+  blogs: [],
+  count: 1
 }
 
 const mutations = {
@@ -17,6 +18,7 @@ const mutations = {
   DELETE_BLOG (state, id) {
     console.log('Inside mutation')
     let blogs = state.blogs
+    console.log(id)
     blogs = blogs.filter(eachblog => eachblog.id !== id)
     console.log('After deletion', blogs)
     state.blogs = blogs
