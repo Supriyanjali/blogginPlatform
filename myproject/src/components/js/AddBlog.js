@@ -1,4 +1,5 @@
 import swal from 'sweetalert'
+import { mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -12,11 +13,12 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['addBlog']),
     submitBlog () {
       if (this.blog.title && this.blog.description && this.blog.title.split(' ').length < 10) {
         console.log(this.blog.title.split(' ').length)
-        this.$store.state.blogs.push(this.blog)
-        this.$store.state.count++
+        this.addBlog(this.blog)
+
         swal({
           text: 'Blog added successfully',
           icon: 'success'

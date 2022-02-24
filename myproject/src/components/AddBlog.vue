@@ -27,7 +27,6 @@
 <script src="./js/AddBlog.js"></script>
 <style scoped>
 #add-blog{
-    box-sizing: border-box;
     margin: 20px auto;
     max-width: 500px;
 }
@@ -44,9 +43,6 @@ input[type="text"],textarea{
     border: 1px dotted #ccc;
     margin:30px 0;
 }
-h3{
-    margin-top: 10px;
-}
 .submitButton{
     color: white;
     padding: 10px;
@@ -58,4 +54,23 @@ h3{
 span{
     color:red;
 }
+@media (max-width: 800px) {
+#add-blog{
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width:75%;
+
+}
+.submitButton{
+width: fit-content;
+margin:20px auto;
+
+}
+}
+
 </style>

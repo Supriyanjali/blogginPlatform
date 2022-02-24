@@ -77,6 +77,17 @@ body {
     height: 21px;
 }
 
+.toggle-button-open {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: inline-block;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
 .toggle-button .bar {
     height: 3px;
     width: 100%;
@@ -115,6 +126,12 @@ body {
     .navbar-links.active {
         display: flex;
     }
+    .brand-title {
+    font-size: 1.5rem;
+    margin: auto;
+    margin-top: 13px;
+     margin-bottom: 13px;
+}
 }
 
 </style>

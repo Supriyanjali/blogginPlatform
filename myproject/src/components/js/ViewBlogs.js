@@ -1,4 +1,4 @@
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import swal from 'sweetalert'
 export default {
   data () {
@@ -16,20 +16,21 @@ export default {
   computed: {
     ...mapGetters(['blogsList']),
     blogsListFxn () {
-      console.log('Hii', this.blogsList)
-      return this.blogsList.filter((blog) => {
-        return blog.title.match(this.search)
-      })
+      return this.blogsList.filter((blog) =>
+        blog.title.match(this.search)
+      )
     }
   },
   methods: {
-    deleteBlog (id) {
-      this.$store.dispatch('deleteBlog', id)
-      swal({
-        text: 'Blog has been deleted successfully',
-        icon: 'success'
-      })
+    ...mapActions(['deleteBlog']),
+    deletedBlog (id) {
+      if (confirm('Do you really want to delete?')) {
+        this.deleteBlog(id)
+        swal({
+          text: 'Blog has been deleted successfully',
+          icon: 'success'
+        })
+      }
     }
-
   }
 }

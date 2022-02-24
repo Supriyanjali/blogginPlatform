@@ -1,13 +1,19 @@
 <template>
-    <div id="show-blogs">
+    <div  id="show-blogs">
         <h1>All Blogs</h1>
         <input type="text" v-model="search"  placeholder="search blogs"/>
+        <div v-if="blogsListFxn.length > 0">
+        <div>
         <div v-for="blog in blogsListFxn" :key="blog.id" :blog="blog" class="single-blog">
             <h2 v-rainbow>{{ blog.title.toUpperCase()}}</h2>
             <article>{{blog.description}}</article>
-            <button @click="deleteBlog(blog.id)">Delete</button>
-            <router-link :to ="{name: 'EditBlog', params: {id: blog.id}}"><button>Edit Blog</button></router-link>
+            <div class="button">
+            <button @click="deletedBlog(blog.id)">Delete</button>
+            <router-link :to ="{name: 'EditBlog', params: {id: blog.id}}"><button>Edit Blog</button></router-link></div>
         </div>
+        </div>
+        </div>
+        <img v-else src='@/assets/noblog1.jpeg'/>
             </div>
 </template>
 <script src="./js/ViewBlogs.js"></script>
@@ -40,5 +46,28 @@ button{
     border:none;
     border-radius: 10px;
 
+}
+img{
+    display: flex;
+    margin: auto;
+    margin-top: 200px;
+}
+@media (max-width: 800px) {
+ #show-blogs{
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+}
+.single-blog{
+    padding:10px;
+    width:250px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 6px #c7c5c5;
+    height:fit-content;
+}
+.button{
+    display: inline;
+}
 }
 </style>
