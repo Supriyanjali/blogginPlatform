@@ -4,15 +4,11 @@ import swal from 'sweetalert'
 export default {
   data () {
     return {
-      blog: null
+      blog: this.$store.getters.blogToEdit
     }
   },
   computed: {
     ...mapGetters(['blogsList'])
-  },
-  mounted () {
-    this.id = this.$route.params.id
-    this.blog = this.blogsList.find((blog) => blog.id === this.id)
   },
   methods: {
     ...mapActions(['editBlog']),
@@ -24,10 +20,13 @@ export default {
           description: this.blog.description
         }
         this.editBlog(editedBlog)
+        console.log(editedBlog)
+        console.log(this.blogsList)
         swal({
           text: 'Blog has been edited successfully',
           icon: 'success'
         })
+        this.$router.push('/')
       } else if (this.blog.title.split(' ').length >= 10) {
         swal({
           text: 'Title must not be greater than 10 words',

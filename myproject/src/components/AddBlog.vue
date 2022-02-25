@@ -15,12 +15,7 @@
         </button>
     </form>
     <div v-if="submitted">
-        <h3>Thanks for adding the post</h3>
-    <div id="preview">
-        <h3>Preview Blog</h3>
-        <p>Blog Title:{{blog.title}}</p>
-        <p>Blog Description:{{blog.description}}</p>
-    </div>
+        <PreviewBlog :blog=blog ></PreviewBlog>
     </div>
     </main>
 </template>
@@ -38,11 +33,7 @@ input[type="text"],textarea{
     display: block;
     width:100%
 }
-#preview{
-    padding: 10px 20px;
-    border: 1px dotted #ccc;
-    margin:30px 0;
-}
+
 .submitButton{
     color: white;
     padding: 10px;

@@ -1,9 +1,12 @@
 {
   "dependencies": {
     "js-cookie": "^3.0.1",
+    "lodash.debounce": "^4.0.8",
     "secure-ls": "^1.2.6",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.4",
     "vue": "^3.2.31",
+    "vue-debounce": "^3.0.2",
     "vuex": "^4.0.2",
     "vuex-persistedstate": "^4.1.0"
   }

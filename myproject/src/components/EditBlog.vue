@@ -4,11 +4,11 @@
     <form>
         <div class="title">
             <label for="titleName" >Title of Blog <span>*</span></label>
-            <textarea type="text" id="titleName" v-model.trim="blog.title" />
+            <textarea type="text" id="titleName" v-model="blog.title" />
         </div>
         <div class="description">
             <label for="desc">Description <span>*</span></label>
-            <textarea rows="10" type="text" v-model.trim="blog.description" id="desc"/>
+            <textarea rows="10" type="text" v-model="blog.description" id="desc"/>
         </div>
         <button class="submitButton" v-on:click.prevent="editingBlog">
             EDIT BLOG

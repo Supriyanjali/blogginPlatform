@@ -1,19 +1,18 @@
 <template>
     <div  id="show-blogs">
         <h1>All Blogs</h1>
-        <input type="text" v-model="search"  placeholder="search blogs"/>
-        <div v-if="blogsListFxn.length > 0">
+        <input type="text" v-model="search" @keyup.enter="blogsListFxn" placeholder="search blogs"/>
+        <div>
         <div>
         <div v-for="blog in blogsListFxn" :key="blog.id" :blog="blog" class="single-blog">
             <h2 v-rainbow>{{ blog.title.toUpperCase()}}</h2>
             <article>{{blog.description}}</article>
             <div class="button">
             <button @click="deletedBlog(blog.id)">Delete</button>
-            <router-link :to ="{name: 'EditBlog', params: {id: blog.id}}"><button>Edit Blog</button></router-link></div>
+            <button @click="editingBlog(blog)">Edit Blog</button></div>
         </div>
         </div>
         </div>
-        <img v-else src='@/assets/noblog1.jpeg'/>
             </div>
 </template>
 <script src="./js/ViewBlogs.js"></script>

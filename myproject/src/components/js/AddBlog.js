@@ -1,5 +1,6 @@
 import swal from 'sweetalert'
 import { mapActions } from 'vuex'
+import PreviewBlog from '@/components/PreviewBlog'
 export default {
   data () {
     return {
@@ -11,6 +12,9 @@ export default {
       },
       submitted: false
     }
+  },
+  components: {
+    PreviewBlog
   },
   methods: {
     ...mapActions(['addBlog']),

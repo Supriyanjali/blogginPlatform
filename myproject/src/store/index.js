@@ -7,9 +7,12 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     blogs: [],
-    count: 1
+    count: 1,
+    blog: {}
   },
-  plugins: [createPersistedState()],
+  plugins: [createPersistedState({
+    storage: window.sessionStorage
+  })],
   mutations: {
     ADD_BLOG (state, blog) {
       state.blogs.push(blog)
@@ -21,9 +24,13 @@ export const store = new Vuex.Store({
       state.blogs = blogs
     },
     EDIT_BLOG (state, blog) {
+      console.log('Hii23', blog)
       state.blogs.forEach(b => {
-        if (b.id === blog.id) { b = blog }
+        if (b.id === blog.id) {
+          b = blog
+        }
       })
+      console.log('I', state.blogs)
     }
   },
   actions: {
@@ -35,6 +42,7 @@ export const store = new Vuex.Store({
       commit('DELETE_BLOG', blog)
     },
     editBlog ({commit}, blog) {
+      console.log('Hii')
       commit('EDIT_BLOG', blog)
     }
   },
@@ -42,6 +50,9 @@ export const store = new Vuex.Store({
   getters: {
     blogsList (state) {
       return state.blogs
+    },
+    blogToEdit (state) {
+      return state.blog
     }
   }
 })
