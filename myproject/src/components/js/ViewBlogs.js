@@ -3,7 +3,8 @@ const Swal = require('sweetalert2')
 export default {
   data () {
     return {
-      search: ''
+      search: '',
+      timeout: null
     }
   },
   directives: {
@@ -16,17 +17,31 @@ export default {
   computed: {
     ...mapGetters(['blogsList']),
     blogsListFxn () {
-      return this.blogsList.filter((blog) => {
-        return blog.title.match(this.search)
-      })
+      return this.blogsList
     }
   },
   methods: {
+    blogsListFxn1 () {
+      console.log('11')
+      return this.blogsList.filter((blog) => {
+        return blog.title.match(this.search)
+      })
+    },
     ...mapActions(['deleteBlog']),
+    activate () {
+      console.log('I am in ')
+      if (this.timeout) {
+        clearTimeout(this.timeout)
+      }
+      this.timeout = setTimeout(() => {
+        console.log('Hii')
+        this.blogsListFxn1()
+      }, 20000)
+    },
     deletedBlog (id) {
       Swal.fire({
         title: 'Are you sure?',
-        text: 'Once deleted cannot be reverted',
+        text: 'Once deleted cannot be',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

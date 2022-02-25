@@ -1,7 +1,7 @@
 <template>
     <div  id="show-blogs">
         <h1>All Blogs</h1>
-        <input type="text" v-model="search" @keyup.enter="blogsListFxn" placeholder="search blogs"/>
+        <input type="text" v-model="search" @input="activate" placeholder="search blogs"/>
         <div>
         <div>
         <div v-for="blog in blogsListFxn" :key="blog.id" :blog="blog" class="single-blog">
